@@ -4,15 +4,7 @@ export PATH=$HOME/bin:/usr/local/go/bin:/usr/local/bin:$PATH
 # Path to your oh-my-zsh installation.
 export ZSH=/home/zoey/.oh-my-zsh
 export PATH="$HOME/.npm-packages/bin:$PATH"
-export HUBOT_GITHUB_CLIENT_ID='330033b6f3104bcbaa8e'
-export HUBOT_GITHUB_CLIENT_SECRET='405a8df493dfb52870271b8d6d48c8ade76f266d'
-export HUBOT_DISCORD_TOKEN='Mzk4MjAyMzMzMjg2MzY3MjQz.DS7GqA.Sv6oSvnoNxIyMsuC78KKZxFY-Qw'
-export HUBOT_ROOM_ID='398200830345478146'
-export HUBOT_GITHUB_ORG='howtoadhd'
-export HUBOT_UPTIMEROBOT_APIKEY='u530965-2d68db0cbd011e29481ae1ae'
-export HUBOT_TIMEZONEIO_URL='https://timezone.io/team/howtoadhd'
-export CF_API_EMAIL='zoey.cluff@gmail.com'
-export CF_API_KEY='a39ce681454be1758d7a7ea88753fe42d8cc4'
+
 
 export  PATH=~/Library/Python/3.6/bin:$PATH
 # Set name of the theme to load. Optionally, if you set this to "random"
@@ -72,7 +64,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git brew django docker github nanoc nyan npm node osx pylint python pip sudo
+  git django docker github nanoc nyan npm node osx pylint python pip sudo
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -105,8 +97,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias mount="sshfs zoey@104.238.164.191:/home/zoey/ /Users/zoeycluff/droplet"
-alias web="sshfs root@45.76.20.24:/var/www/ /Users/zoeycluff/doweb"
+
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 
