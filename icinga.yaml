@@ -1,0 +1,50 @@
+---
+- hosts: VPS
+  become: true
+  gather_facts: true
+  remote_user: zoey
+  become_user: root
+
+  tasks:
+
+    - name:  add ichinga key
+      apt_key:
+        url: https://packages.icinga.com/icinga.key
+        state: absent
+
+    - name: add repo
+      apt_repository:
+        repo: deb http://packages.icinga.com/ubuntu icinga-xenial main
+        state: absent
+
+    - name: install packages
+      when: (ansible_distribution == "Debian" or ansible_distribution == "Ubuntu")
+      apt:
+        name: icinga2
+        update_cache: yes
+        state: absent
+
+    - name: install packages
+      when: (ansible_distribution == "Debian" or ansible_distribution == "Ubuntu")
+      apt:
+        name: icingacli
+        update_cache: yes
+        state: absent
+
+    - name: install packages
+      when: (ansible_distribution == "Debian" or ansible_distribution == "Ubuntu")
+      apt:
+        name: monitoring-plugins
+        state: absent
+
+    - name: install packages
+      when: (ansible_distribution == "Debian" or ansible_distribution == "Ubuntu")
+      apt:
+        name: icingaweb2
+        state: absent
+
+    - name: start Icinga2
+      systemd:
+        name: icinga2
+        state: stopped
+        enabled: no

@@ -1,0 +1,33 @@
+---
+- hosts: VPS
+  become: true
+  gather_facts: true
+  remote_user: root
+  become_user: root
+
+  tasks:
+
+  - name: install packages
+    when: (ansible_distribution == "Debian" or ansible_distribution == "Ubuntu")
+    apt:
+      name: zsh
+      state: present
+
+  - name: Add a regular user
+    user:
+      name: zoey
+      state: present
+      shell: /bin/zsh
+      groups: sudo
+
+  - name: copy my key
+    authorized_key:
+      user: zoey
+      state: present
+      key: "{{ lookup('file', '/Users/zoeycluff/.ssh/id_rsa.pub') }}"
+
+  - name: copy .zshrc
+    copy:
+      src: /Volumes/Code/ansible/configs/.zshrc
+      dest: /home/zoey/.zshrc
+      force: yes

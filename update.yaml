@@ -1,0 +1,13 @@
+---
+- hosts: VPS
+  become: true
+  gather_facts: true
+  remote_user: zoey
+  become_user: root
+
+  tasks:
+
+    - name: Install updates
+      apt:
+        update_cache: yes
+        upgrade: dist

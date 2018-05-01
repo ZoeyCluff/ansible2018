@@ -1,0 +1,20 @@
+---
+- hosts: VPS
+  become: true
+  gather_facts: true
+  remote_user: root
+  become_user: root
+
+  tasks:
+
+    - name: Install NGINX
+        apt:
+          name: nginx
+          state: present
+          update_cache: yes
+
+    - name: copy NGINX config
+      copy:
+        src: /Volumes/Code/ansible/configs/nginx.conf
+        dest: /etc/nginx/
+        state: present
